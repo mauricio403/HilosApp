@@ -11,6 +11,8 @@ namespace HilosApp
             Thread hiloUno = new Thread(MetodoPorEjecturar);
             Thread hiloDos = new Thread(MetodoPorEjecturar);
 
+            Console.WriteLine("La cultura del hilo principal es: {0}", Thread.CurrentThread.CurrentCulture);
+
             Console.WriteLine("Voy a ejecutar el hilo uno xD");
             hiloUno.Start();
             Console.WriteLine("Voy a jecutar el hilo dos xDD");
@@ -23,6 +25,8 @@ namespace HilosApp
             hiloUno.Join();
             Console.WriteLine("El hilo dos se junta");
             hiloDos.Join();
+
+
             
         }
 
@@ -31,9 +35,18 @@ namespace HilosApp
             //To do: Aqui poner el codigo
 
             var hiloActual = Thread.CurrentThread; //aqui almacenamos el hilo actual xD
+            hiloActual.CurrentCulture = new System.Globalization.CultureInfo("en-US"); //cambiar la cultura
             Console.WriteLine("Hilo actual {0}: ", hiloActual.ManagedThreadId); //imprime quien es el hilo
 
             Console.WriteLine("Mi Cultura es {0} ", hiloActual.CurrentCulture); //Cultura en la que esta ejecutamdose el hilo actual
+
+            var random = new Random();
+            for (int i =0; i <= 10; i++)
+            {
+                Console.WriteLine("Hilo {0} indice {1}", hiloActual.ManagedThreadId, i);
+
+                Thread.Sleep(random.Next(500,2000));
+            }
 
         }
     }
