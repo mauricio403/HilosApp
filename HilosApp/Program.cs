@@ -5,10 +5,10 @@ namespace HilosApp
 {
     class Program
     {
-        static void Main(string[] args)
+         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Thread hiloUno = new Thread(MetodoPorEjecturar);
+           /* Thread hiloUno = new Thread(MetodoPorEjecturar);
             Thread hiloDos = new Thread(MetodoPorEjecturar);
 
             Console.WriteLine("La cultura del hilo principal es: {0}", Thread.CurrentThread.CurrentCulture);
@@ -24,10 +24,25 @@ namespace HilosApp
             Console.WriteLine("El hilo uno se junta");
             hiloUno.Join();
             Console.WriteLine("El hilo dos se junta");
-            hiloDos.Join();
+            hiloDos.Join();*/
+
+            Thread corredor1 = new Thread(Carrera.Corredor);
+            Thread corredor2 = new Thread(Carrera.Corredor);
+            Thread corredor3= new Thread(Carrera.Corredor);
+            Thread corredor4= new Thread(Carrera.Corredor);
+
+            corredor1.Start();
+            corredor2.Start();
+            corredor3.Start();
+            corredor4.Start();
+
+            corredor1.Join();
+            corredor2.Join();
+            corredor3.Join();
+            corredor4.Join();
 
 
-            
+
         }
 
         static void MetodoPorEjecturar()
