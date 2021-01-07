@@ -16,7 +16,7 @@ namespace HilosApp
             {
 
                 pasos += random.Next(0, 4);
-                Console.WriteLine("Corredor {} dio {1} pasos", nombre, pasos);
+                Console.WriteLine("Corredor {0} dio {1} pasos", nombre, pasos);
                 Thread.Sleep(10);
 
 
